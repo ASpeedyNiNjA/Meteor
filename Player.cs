@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   // public float speed = 1.0f;
-    private float practiceVariableGoesHere;
-    private bool practiceVariableGoesDown;
-    
+    //Input Variables
+    private float horizontalInput;
+    private float verticalInput;
+    private float backwardInput;
+    private float forwardInput;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,8 +20,14 @@ public class Player : MonoBehaviour
     void Update()
     {
         //Input Manager Variables
-        practiceVariableGoesHere = Input.GetAxis("Horizontal");
-        practiceVariableGoesDown = Input.GetKey(KeyCode.Space);
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        backwardInput = Input.GetAxis("Backward");
+        forwardInput = Input.GetAxis("Forward");
+
+
+
+        //practiceVariableGoesDown = Input.GetKey(KeyCode.Space);
 
 
 
@@ -30,7 +38,10 @@ public class Player : MonoBehaviour
         //transform.Translate(0, 1, 0);
 
         //Attempting #3
-        transform.Translate(practiceVariableGoesHere * Time.deltaTime * Vector3.right);
+        transform.Translate(horizontalInput * Vector3.right);
+        transform.Translate(verticalInput * Vector3.up);
+        transform.Translate(backwardInput * Vector3.back);
+        transform.Translate(forwardInput * Vector3.forward);
 
 
 
