@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private float verticalInput;
     private float backwardInput;
     private float forwardInput;
+    public GameObject jokeProjectile;
 
 
 
@@ -42,6 +43,12 @@ public class Player : MonoBehaviour
         transform.Translate(verticalInput * Vector3.up);
         transform.Translate(backwardInput * Vector3.back);
         transform.Translate(forwardInput * Vector3.forward);
+
+        //Attempting #4 Projectiles & Collision Detection
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(jokeProjectile, transform.position, jokeProjectile.transform.rotation);
+        }
 
 
 
