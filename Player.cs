@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     private float backwardInput;
     private float forwardInput;
     public GameObject jokeProjectile;
-
+    public Camera playerCamera;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,7 +47,16 @@ public class Player : MonoBehaviour
         //Attempting #4 Projectiles & Collision Detection
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(jokeProjectile, transform.position, jokeProjectile.transform.rotation);
+            GameObject newProjectile = Instantiate(jokeProjectile, playerCamera.transform.position + playerCamera.transform.forward, Quaternion.identity);
+            
+            Forward forwardScript = newProjectile.GetComponent<Forward>();
+            if (forwardScript != null)
+            {
+                forwardScript.SetDirection(playerCamera.transform.forward);
+            }
+        
+        
+        
         }
 
 
